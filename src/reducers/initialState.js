@@ -1,4 +1,5 @@
 export default {
+	recipe: {},
   fuelSavings: {
     newMpg: '',
     tradeMpg: '',
