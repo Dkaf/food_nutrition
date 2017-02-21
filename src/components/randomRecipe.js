@@ -11,7 +11,7 @@ class RandomRecipe extends React.Component {
 
 	onClick(e) {
 		e.preventDefault();
-		this.dispatch(getRandomRecipe());
+		this.props.dispatch(getRandomRecipe());
 	}
 
 	render() {
@@ -32,7 +32,8 @@ RandomRecipe.propTypes = {
 	children: PropTypes.element,
 	onClick: PropTypes.func,
 	text: PropTypes.string.isRequired,
-	recipe: PropTypes.object
+	recipe: PropTypes.array,
+	dispatch: PropTypes.func
 };
 
 let mapStateToProps = (state) => {

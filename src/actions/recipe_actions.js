@@ -23,7 +23,7 @@ export function getRandomRecipe() {
 			return response.json();
 		})
 		.then( (data) => {
-			return dispatch(getRandomRecipeSuccess(data));
+			return dispatch(getRandomRecipeSuccess(data.body.recipes));
 		})
 		.catch( (err) =>{
 			return dispatch(getRandomRecipeErr(err));
