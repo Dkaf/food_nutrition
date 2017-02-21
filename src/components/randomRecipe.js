@@ -16,7 +16,7 @@ class RandomRecipe extends React.Component {
 
 	render() {
 		let recipes = this.props.recipe.map((i) => {
-			return <Recipe key={i} title={i.title} imgUrl={i.imgUrl} source={i.source} />;
+			return <Recipe key={i} title={i.title} imgUrl={i.image} source={i.sourceName} />;
 		});
 
 		return (
