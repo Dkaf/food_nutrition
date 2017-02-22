@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import RandomRecipe from './randomRecipe';
+import RecipeSearch from './recipeSearch';
 
 
 class FoodApp extends React.Component {
@@ -8,6 +9,7 @@ class FoodApp extends React.Component {
 			<div>
 				<h1>Food Nutrition</h1>
 				<RandomRecipe text="get a random recipe" />
+				<RecipeSearch />
 			</div>
 		);
 	}

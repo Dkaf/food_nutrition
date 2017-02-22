@@ -1,5 +1,6 @@
 export default {
 	recipe: [],
+	similarRecipes: [],
   fuelSavings: {
     newMpg: '',
     tradeMpg: '',

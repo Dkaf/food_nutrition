@@ -60,3 +60,33 @@ export function getRecipeDetails(id) {
 		});
 	};
 }
+
+export function getSimilarRecipeSuccess(recipes) {
+	return {
+		type: types.GET_SIMILAR_RECIPE_SUCCESS,
+		recipes: recipes
+	};
+}
+
+export function getSimilarRecipeErr(err) {
+	return {
+		type: types.GET_SIMILAR_RECIPE_ERR,
+		err: err
+	};
+}
+
+export function getSimilarRecipe(query) {
+	return (dispatch) => {
+		const request = new Request('https://hidden-stream-82621.herokuapp.com/recipesearch/' + query);
+		fetch(request)
+		.then( (response) => {
+			return response.json();
+		})
+		.then( (data) => {
+			return dispatch(getSimilarRecipeSuccess(data));
+		})
+		.catch( (err) => {
+			return dispatch(getSimilarRecipeErr(err));
+		});
+	};
+}
