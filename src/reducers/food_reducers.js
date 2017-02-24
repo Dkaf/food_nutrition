@@ -15,10 +15,11 @@ export default function foodReducer(state = initialState, action) {
 			return objectAssign({}, state, {similarRecipes: action.recipes});
 
 		case GET_SIMILAR_RECIPE_ERR:
-			return alert(action.err);
+			alert(action.err);
+			return state;
 
 		case RECIPE_QUERY:
-			return objectAssign({}, state, {recipeQuery: action.query})
+			return objectAssign({}, state, {recipeQuery: action.query});
 
 		default:
 			return state;

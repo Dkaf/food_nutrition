@@ -23,7 +23,7 @@ export function getRandomRecipe() {
 			return response.json();
 		})
 		.then( (data) => {
-			return dispatch(getRandomRecipeSuccess(data.body.recipes));
+			return dispatch(getRandomRecipeSuccess(data));
 		})
 		.catch( (err) =>{
 			return dispatch(getRandomRecipeErr(err));
@@ -83,7 +83,7 @@ export function getSimilarRecipe(query) {
 			return response.json();
 		})
 		.then( (data) => {
-			return dispatch(getSimilarRecipeSuccess(data));
+			return dispatch(getSimilarRecipeSuccess(data.body));
 		})
 		.catch( (err) => {
 			return dispatch(getSimilarRecipeErr(err));
