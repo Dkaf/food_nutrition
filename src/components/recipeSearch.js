@@ -21,7 +21,7 @@ class RecipeSearch extends React.Component {
 	}
 	render() {
 		let recipeResults = this.props.similarRecipes.map( (i) => {
-			return <Recipe key={i} title={i.title} />;
+			return <Recipe key={i.id} title={i.title} image={i.imageUrls} />;
 		});
 		return (
 			<div>

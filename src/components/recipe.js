@@ -16,7 +16,7 @@ Recipe.propTypes = {
 	children: PropTypes.element,
 	title: PropTypes.string.isRequired,
 	imgUrl: PropTypes.string,
-	source: PropTypes.string.isRequired
+	source: PropTypes.string
 };
 
 export default Recipe;

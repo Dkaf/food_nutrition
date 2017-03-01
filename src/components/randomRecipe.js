@@ -15,17 +15,17 @@ class RandomRecipe extends React.Component {
 	}
 
 	render() {
-		let recipes = this.props.recipe.map((i) => {
-			let recipe = i.map((j) => {
-				return <Recipe key={i} title={j.title} imgUrl={j.image} source={j.sourceName} />;
-			});
-			return recipe;
-		});
+		let recipes = <div />;
+		if (this.props.recipe != null) {
+			recipes = this.props.recipe.map((i) => {
+					return <Recipe key={i.id} title={i.title} imgUrl={i.image} source={i.sourceName} />;
+				});
+		}
 
 		return (
 			<div>
 				<button onClick={this.onClick}>{this.props.text}</button>
-				{recipes}
+					{recipes}
 			</div>
 		);
 	}
