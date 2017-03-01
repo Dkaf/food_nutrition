@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import {addScore, nextQuestion} from '../actions/quizActions';
+import {addScore, nextQuestion, quizReset} from '../actions/quizActions';
 import {connect} from 'react-redux';
 
 
@@ -13,6 +13,9 @@ class Question extends React.Component {
 		e.preventDefault();
 		if( this.props.valueA > this.props.valueB && e.value == this.props.valueA) {
 			this.dispatch(addScore());
+			if (this.props.count === this.props.questions.length) {
+				this.dispatch(quizReset());
+			}
 			this.dispatch(nextQuestion());
 		}
 		else if ( this.props.valueB > this.props.valueA && e.value == this.props.valueB) {
@@ -38,10 +41,19 @@ Question.propTypes = {
 	valueB: PropTypes.string.isRequired,
 	titleA: PropTypes.string.isRequired,
 	titleB: PropTypes.string.isRequired,
-	onChange: PropTypes.func
+	onChange: PropTypes.func,
+	questions: PropTypes.array,
+	count: PropTypes.number
+};
+
+let mapStateToProps = (state) => {
+	return {
+		count: state.foodReducer.questionCount,
+		questions: state.foodReducer.questions
+	};
 };
 
 
-let Container = connect()(Question);
+let Container = connect(mapStateToProps)(Question);
 
 export default Container;

@@ -11,3 +11,4 @@ export const RECIPE_QUERY = 'RECIPE_QUERY';
 
 export const ADD_SCORE = 'ADD_SCORE';
 export const NEXT_QUESTION = 'NEXT_QUESTION';
+export const QUIZ_RESET = 'QUIZ_RESET';

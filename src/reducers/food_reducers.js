@@ -1,4 +1,4 @@
-import {GET_RANDOM_RECIPE_SUCCESS, GET_RANDOM_RECIPE_ERR, GET_SIMILAR_RECIPE_SUCCESS, GET_SIMILAR_RECIPE_ERR, RECIPE_QUERY, ADD_SCORE, NEXT_QUESTION} from '../constants/food_action_types';
+import {GET_RANDOM_RECIPE_SUCCESS, GET_RANDOM_RECIPE_ERR, GET_SIMILAR_RECIPE_SUCCESS, GET_SIMILAR_RECIPE_ERR, RECIPE_QUERY, ADD_SCORE, NEXT_QUESTION, QUIZ_RESET} from '../constants/food_action_types';
 import objectAssign from 'object-assign';
 import initialState from './initialState';
 
@@ -28,6 +28,9 @@ export default function foodReducer(state = initialState, action) {
 
 		case NEXT_QUESTION:
 			return objectAssign({}, state, {questionCounter: state.question + action.question});
+
+		case QUIZ_RESET:
+			return objectAssign({}, state, {questionCounter: action.question, score: action.score});
 
 		default:
 			return state;

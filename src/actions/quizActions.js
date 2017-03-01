@@ -13,3 +13,11 @@ export function nextQuestion() {
 		question: 1
 	};
 }
+
+export function quizReset() {
+	return {
+		type: types.QUIZ_RESET,
+		question: 0,
+		score: 0
+	};
+}
