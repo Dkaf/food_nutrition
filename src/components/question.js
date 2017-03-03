@@ -37,8 +37,8 @@ class Question extends React.Component {
 
 Question.propTypes = {
 	text: PropTypes.string.isRequired,
-	valueA: PropTypes.string.isRequired,
-	valueB: PropTypes.string.isRequired,
+	valueA: PropTypes.number.isRequired,
+	valueB: PropTypes.number.isRequired,
 	titleA: PropTypes.string.isRequired,
 	titleB: PropTypes.string.isRequired,
 	onChange: PropTypes.func,

@@ -5,6 +5,17 @@ import QuizForm from './quizForm';
 
 
 class FoodApp extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+
+	onClick() {
+		return (
+			<QuizForm />
+		);
+	}
+
+
 	render() {
 		return (
 			<div>
