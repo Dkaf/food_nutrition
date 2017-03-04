@@ -12,22 +12,9 @@ class QuizForm extends React.Component {
 	}
 
 	componentWillMount() {
-		this.props.dispatch(getRandomRecipe());
+		this.props.dispatch(getRandomRecipe(this.props.questions));
 	}
 
-	componentDidMount() {
-		let findVal = (values, question) => {
-			return values.title === question.title;
-		};
-		let newQuestions = this.props.questions.forEach( (i) => {
-			return (
-				i.valueA = (this.props.nutritionA.find(findVal(this.props.nutritionA, i)).amount),
-				i.valueB = (this.props.nutritionB.find(findVal(this.props.nutritionB, i)).amount)
-			);
-		});
-		console.log(newQuestions);
-		this.props.dispatch(quizSetup(newQuestions));
-	}
 
 	onSubmit(e) {
 		e.preventDefault();

@@ -1,10 +1,11 @@
 import * as types from '../constants/food_action_types';
 import fetch from 'isomorphic-fetch';
 
-export function getRandomRecipeSuccess(recipe) {
+export function getRandomRecipeSuccess(recipe, newQuestions) {
 	return {
 		type: types.GET_RANDOM_RECIPE_SUCCESS,
-		recipe: recipe
+		recipe: recipe,
+		newQuestions: newQuestions
 	};
 }
 
@@ -15,7 +16,7 @@ export function getRandomRecipeErr(err) {
 	};
 }
 
-export function getRandomRecipe() {
+export function getRandomRecipe(questions) {
 	return (dispatch) => {
 		const request = new Request('https://hidden-stream-82621.herokuapp.com/random');
 		fetch(request)
@@ -23,7 +24,19 @@ export function getRandomRecipe() {
 			return response.json();
 		})
 		.then( (data) => {
-			return dispatch(getRandomRecipeSuccess(data));
+			let newQuestions = questions.map( (i) => {
+				let findVal = (values) => {
+					return values.title === i.title;
+				};
+				let valA = data[0].recipeNutrition.body.find(findVal);
+				let valB = data[1].recipeNutrition.body.find(findVal);
+				return {
+					title: i.title,
+					valueA: valA?valA.amount:0,
+					valueB: valB?valB.amount:0
+				};
+			});
+			return dispatch(getRandomRecipeSuccess(data, newQuestions));
 		})
 		.catch( (err) =>{
 			return dispatch(getRandomRecipeErr(err));

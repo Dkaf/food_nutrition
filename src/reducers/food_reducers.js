@@ -8,7 +8,8 @@ export default function foodReducer(state = initialState, action) {
 		case types.GET_RANDOM_RECIPE_SUCCESS:
 			return objectAssign({}, state, {recipe: action.recipe,
 											nutritionA: action.recipe[0].recipeNutrition.body,
-											nutritionB: action.recipe[1].recipeNutrition.body});
+											nutritionB: action.recipe[1].recipeNutrition.body,
+											questions: action.newQuestions});
 
 		case types.GET_RANDOM_RECIPE_ERR:
 			return alert(action.err);
