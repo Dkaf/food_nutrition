@@ -74,6 +74,36 @@ export function getRecipeDetails(id) {
 	};
 }
 
+export function getRecipeOptionsSuccess(recipe) {
+	return {
+		type: types.GET_RECIPE_OPTIONS_SUCCESS,
+		recipe: recipe
+	};
+}
+
+export function getRecipeOptionsErr(err) {
+	return {
+		type: types.GET_RECIPE_OPTIONS_ERR,
+		err: err
+	};
+}
+
+export function getRecipeOptions(query) {
+	return (dispatch) => {
+		const request = new Request('https://hidden-stream-82621.herokuapp.com/recipesearch/' + query);
+		fetch(request)
+		.then( (response) => {
+			return response.json();
+		})
+		.then( (data) => {
+			return dispatch(getRecipeOptionsSuccess(data.body));
+		})
+		.catch( (err) => {
+			return dispatch(getRecipeOptionsErr(err));
+		});
+	};
+}
+
 export function getSimilarRecipeSuccess(recipes) {
 	return {
 		type: types.GET_SIMILAR_RECIPE_SUCCESS,
@@ -88,15 +118,15 @@ export function getSimilarRecipeErr(err) {
 	};
 }
 
-export function getSimilarRecipe(query) {
+export function getSimilarRecipe(recipe) {
 	return (dispatch) => {
-		const request = new Request('https://hidden-stream-82621.herokuapp.com/recipesearch/' + query);
+		const request = new Request('https://hidden-stream-82621.herokuapp.com/similarRecipes/' + recipe);
 		fetch(request)
 		.then( (response) => {
 			return response.json();
 		})
 		.then( (data) => {
-			return dispatch(getSimilarRecipeSuccess(data.body));
+			return dispatch(getSimilarRecipeSuccess(data));
 		})
 		.catch( (err) => {
 			return dispatch(getSimilarRecipeErr(err));

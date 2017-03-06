@@ -11,25 +11,25 @@ class Question extends React.Component {
 
 	checkAnswer(e) {
 		e.preventDefault();
-		if( this.props.valueA > this.props.valueB && e.value == this.props.valueA) {
-			this.dispatch(addScore());
-			if (this.props.count === this.props.questions.length) {
-				this.dispatch(quizReset());
-			}
-			this.dispatch(nextQuestion());
+		console.log('clicked');
+		if( this.props.valueA > this.props.valueB && e.target.value == this.props.valueA) {
+			this.props.dispatch(addScore());
 		}
-		else if ( this.props.valueB > this.props.valueA && e.value == this.props.valueB) {
-			this.dispatch(addScore());
-			this.dispatch(nextQuestion());
+		if ( this.props.valueB > this.props.valueA && e.target.value == this.props.valueB) {
+			this.props.dispatch(addScore());
 		}
+		if (this.props.count === this.props.questions.length) {
+			this.props.dispatch(quizReset());
+		}
+		this.props.dispatch(nextQuestion());
 	}
 
 	render() {
 		return (
 			<div className="questionDiv">
 				<span>{this.props.text}</span>
-					<button className="questionRadio" value={this.props.valueA} onChange={this.checkAnswer}>{this.props.titleA}</button>
-					<button className="questionRadio" value={this.props.valueB} onChange={this.checkAnswer} >{this.props.titleB}</button>
+					<button className="questionButton" value={this.props.valueA} onClick={this.checkAnswer}>{this.props.titleA}</button>
+					<button className="questionButton" value={this.props.valueB} onClick={this.checkAnswer} >{this.props.titleB}</button>
 			</div>
 		);
 	}
@@ -43,12 +43,13 @@ Question.propTypes = {
 	titleB: PropTypes.string.isRequired,
 	onChange: PropTypes.func,
 	questions: PropTypes.array,
-	count: PropTypes.number
+	count: PropTypes.number,
+	dispatch: PropTypes.func
 };
 
 let mapStateToProps = (state) => {
 	return {
-		count: state.foodReducer.questionCount,
+		count: state.foodReducer.questionCounter,
 		questions: state.foodReducer.questions
 	};
 };

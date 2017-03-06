@@ -21,10 +21,3 @@ export function quizReset() {
 		score: 0
 	};
 }
-
-export function quizSetup(newQuestions) {
-	return {
-		type: types.QUIZ_SETUP,
-		newQuestions: newQuestions
-	};
-}

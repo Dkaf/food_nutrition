@@ -14,6 +14,13 @@ export default function foodReducer(state = initialState, action) {
 		case types.GET_RANDOM_RECIPE_ERR:
 			return alert(action.err);
 
+		case types.GET_RECIPE_OPTIONS_SUCCESS:
+			return objectAssign({}, state, {recipeOptions: action.recipe});
+
+		case types.GET_RECIPE_OPTIONS_ERR:
+			alert(action.err);
+			return state;
+
 		case types.GET_SIMILAR_RECIPE_SUCCESS:
 			return objectAssign({}, state, {similarRecipes: action.recipes});
 
@@ -24,17 +31,21 @@ export default function foodReducer(state = initialState, action) {
 		case types.RECIPE_QUERY:
 			return objectAssign({}, state, {recipeQuery: action.query});
 
+		case types.GET_RECIPE_DETAILS_SUCCESS:
+			return objectAssign({}, state, {originalRecipeDetails: action.details});
+
+		case types.GET_RECIPE_DETAILS_ERR:
+			alert(action.err);
+			return state;
+
 		case types.ADD_SCORE:
 			return objectAssign({}, state, {score: state.score + action.score});
 
 		case types.NEXT_QUESTION:
-			return objectAssign({}, state, {questionCounter: state.question + action.question});
+			return objectAssign({}, state, {questionCounter: state.questionCounter + action.question});
 
 		case types.QUIZ_RESET:
 			return objectAssign({}, state, {questionCounter: action.question, score: action.score});
-
-		case types.QUIZ_SETUP:
-			return objectAssign({}, state, {questions: action.newQuestions});
 
 		default:
 			return state;
