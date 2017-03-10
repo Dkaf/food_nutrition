@@ -12,7 +12,8 @@ export default function foodReducer(state = initialState, action) {
 											questions: action.newQuestions});
 
 		case types.GET_RANDOM_RECIPE_ERR:
-			return alert(action.err);
+			alert(action.err);
+			return state;
 
 		case types.GET_RECIPE_OPTIONS_SUCCESS:
 			return objectAssign({}, state, {recipeOptions: action.recipe});
@@ -39,7 +40,10 @@ export default function foodReducer(state = initialState, action) {
 			return state;
 
 		case types.ADD_SCORE:
-			return objectAssign({}, state, {score: state.score + action.score});
+			return objectAssign({}, state, {score: state.score + action.score, feedback:'Correct!'});
+
+		case types.INCORRECT:
+			return objectAssign({}, state, {feedback: 'Sorry, that is incorrect'});
 
 		case types.NEXT_QUESTION:
 			return objectAssign({}, state, {questionCounter: state.questionCounter + action.question});

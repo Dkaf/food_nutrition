@@ -5,7 +5,7 @@ class IndexPage extends React.Component {
 	render() {
 		return (
 			<div>
-				<span>Play the <Link to="quiz">quiz</Link></span>
+				<span id="quizLink">Play the <Link to="quiz">quiz</Link></span>
 			</div>
 		);
 	}

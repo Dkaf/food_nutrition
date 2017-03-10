@@ -22,20 +22,18 @@ class QuizForm extends React.Component {
 
 
 	render() {
-		if(this.props.randomRecipes != null) {
-			return (
-				<div>
-					<RandomRecipe text="get a random recipe" />
+		return (
+			<div id="quizDiv">
+				<RandomRecipe />
+				<div id="questionsDiv">					
 					<form onSubmit={this.onSubmit}>
-						<Question text={this.props.questions[this.props.counter].title} valueA={this.props.questions[this.props.counter].valueA} valueB={this.props.questions[this.props.counter].valueB} titleA={this.props.randomRecipes[0].title} titleB={this.props.randomRecipes[1].title} />
+						<Question className="question" text={this.props.questions[this.props.counter].title} valueA={this.props.questions[this.props.counter].valueA} valueB={this.props.questions[this.props.counter].valueB} titleA={this.props.randomRecipes[0].title} titleB={this.props.randomRecipes[1].title} />
 					</form>
+					<span id="feedback">{this.props.feedback}</span>
 					<span id="score">Score: {this.props.score}</span>
 				</div>
-			);
-		}
-		else {
-			return <div />;
-		}
+			</div>
+		);
 	}
 }
 
@@ -46,6 +44,7 @@ let mapStateToProps = (state) => {
 		nutritionB: state.foodReducer.nutritionB,
 		questions: state.foodReducer.questions,
 		counter: state.foodReducer.questionCounter,
+		feedback: state.foodReducer.feedback,
 		score: state.foodReducer.score
 	};
 };
@@ -57,6 +56,7 @@ QuizForm.propTypes = {
 	nutritionB: PropTypes.array,
 	counter: PropTypes.number,
 	score: PropTypes.number,
+	feedback: PropTypes.string,
 	questions: PropTypes.array,
 	dispatch: PropTypes.func
 };

@@ -3,10 +3,10 @@ import React, {PropTypes} from 'react';
 class Recipe extends React.Component {
 	render() {
 		return (
-			<div>
-				<span className="title">{this.props.title}</span>
-				<span className="recipeImg"><img src={this.props.imgUrl}/></span>
-				<span className="source">{this.props.source}</span>
+			<div className="recipeDiv">
+				<span className="recipeTitle">{this.props.title}</span>
+				<span className="recipeImgSpan"><img className="recipeImg" src={this.props.imgUrl}/></span>
+				<span className="recipeSource">{this.props.source}</span>
 			</div>
 		);
 	}

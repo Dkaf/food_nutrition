@@ -13,6 +13,7 @@ export default {
 		{title: 'Sodium', valueA: 0, valueB: 0},
 		{title: 'Sugar', valueA: 0, valueB: 0}
 	],
+	feedback: '',
   fuelSavings: {
     newMpg: '',
     tradeMpg: '',

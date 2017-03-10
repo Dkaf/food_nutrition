@@ -4,6 +4,124 @@ $vin-green: #60b044;
 $vin-red: #ff0000;
 
 /* Styles */
+#mainAppDiv {
+	text-align: center;
+}
+
+#mainTitle {
+	color: grey;
+	font-size: 5em;
+}
+
+button {
+	font-weight: bold;
+	background: rgb(193, 193, 193);
+	color: white;
+	border: none;
+	border-radius: 3px;
+}
+
+//Index styles
+#quizLink {
+	font-size: 2em;
+}
+
+//Quiz styles
+.recipeDiv {
+	position: relative;
+	text-align: center;
+	font-weight: bold;
+	color: grey;
+	border: 3px solid grey;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.recipeTitle {
+	font-size: 1.5em;
+	display: block;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-transform: capitalize;
+}
+
+.recipeImg {
+	width: 200px;
+	height: auto;
+}
+
+.recipeSource {
+	display: block;
+	margin-bottom: 10px;
+}
+
+#quizDiv {
+	display: block;
+	float: left;
+}
+
+#questionsDiv {
+	text-align: center;
+}
+
+
+.questionText {
+	margin-bottom: 20px;
+	font-size: 2em;
+	display: block;
+}
+
+.questionButton {
+	height: 50px;
+	width: 300px;
+	margin-bottom: 15px;
+	font-size: 1.3em;
+	text-transform: capitalize;
+}
+
+#feedback {
+	font-size: 1.5em;
+	margin-right: 25px;
+}
+
+#score {
+	font-size: 1.5em;
+	text-align: right;
+}
+
+// Recipe Search Syles
+
+#recipeSearchDiv {
+	text-align: center;
+	position: relative;
+}
+
+#recipeInput {
+	position: relative;
+	text-align: center;
+	height: 25px;
+	width: 250px;
+	font-size: 1.8em;
+}
+
+#recipeSubmit {
+	text-transform: uppercase;
+	height: 30px;
+	width: 90px;
+	font-size: 1.4em;
+	border-radius: 0px;
+}
+
+.recipeOptions {
+	display: block;
+	height: 50px;
+	width: 250px;
+	font-size: 1.6em;
+	text-transform: capitalize;;
+	margin: 10px auto;
+
+}
+
 body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.4em;

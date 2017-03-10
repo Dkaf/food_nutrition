@@ -12,8 +12,8 @@ class FoodApp extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<h1>Food Nutrition</h1>
+			<div id="mainAppDiv">
+				<h1 id="mainTitle">Food Nutrition</h1>
 				<RecipeSearch />
 				{this.props.children}
 			</div>

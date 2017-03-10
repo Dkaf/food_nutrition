@@ -28,16 +28,18 @@ class RecipeSearch extends React.Component {
 	}
 	render() {
 		let recipeOptions = this.props.recipeOptions.map( (i) => {
-			return <button key={i.id} value={i.id} onClick={this.onClick}>{i.title}</button>;
+			return <button className="recipeOptions" key={i.id} value={i.id} onClick={this.onClick}>{i.title}</button>;
 		});
 		let recipeResults = this.props.similarRecipes.map( (i) => {
-			return <Recipe key={i.id} title={i.title} image={i.imageUrls} />;
+			if (i.healthScore > this.props.originalRecipeDetails.healthScore ) {
+				return <Recipe className="recipeResults" key={i.id} title={i.title} />;
+			}
 		});
 		return (
-			<div>
+			<div id="recipeSearchDiv">
 				<form onSubmit={this.onSubmit}>
 					<input id="recipeInput" placeholder="Recipe Search" onChange={this.onChange} />
-					<button type="submit">Submit</button>
+					<button id="recipeSubmit" type="submit">Go!</button>
 				</form>
 				{recipeOptions}
 				{recipeResults}
@@ -53,14 +55,17 @@ RecipeSearch.propTypes = {
 	onSubmit: PropTypes.func,
 	dispatch: PropTypes.func,
 	similarRecipes: PropTypes.array,
-	recipeOptions: PropTypes.array
+	recipeOptions: PropTypes.array,
+	originalRecipeDetails: PropTypes.obj
+
 };
 
 let mapStateToProps = (state) => {
 	return {
 		query: state.foodReducer.recipeQuery,
 		similarRecipes: state.foodReducer.similarRecipes,
-		recipeOptions: state.foodReducer.recipeOptions
+		recipeOptions: state.foodReducer.recipeOptions,
+		originalRecipeDetails: state.foodReducer.originalRecipeDetails
 	};
 };
 

@@ -21,3 +21,9 @@ export function quizReset() {
 		score: 0
 	};
 }
+
+export function incorrect() {
+	return {
+		type: types.INCORRECT
+	};
+}

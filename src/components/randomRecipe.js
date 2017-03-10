@@ -24,7 +24,6 @@ class RandomRecipe extends React.Component {
 
 		return (
 			<div>
-				<button onClick={this.onClick}>{this.props.text}</button>
 					{recipes}
 			</div>
 		);

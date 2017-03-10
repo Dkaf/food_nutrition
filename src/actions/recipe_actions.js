@@ -28,8 +28,8 @@ export function getRandomRecipe(questions) {
 				let findVal = (values) => {
 					return values.title === i.title;
 				};
-				let valA = data[0].recipeNutrition.body.find(findVal);
-				let valB = data[1].recipeNutrition.body.find(findVal);
+				let valA = data[0].recipeNutrition.find(findVal);
+				let valB = data[1].recipeNutrition.find(findVal);
 				return {
 					title: i.title,
 					valueA: valA?valA.amount:0,
