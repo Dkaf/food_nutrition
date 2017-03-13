@@ -24,10 +24,16 @@ class QuizForm extends React.Component {
 	render() {
 		return (
 			<div id="quizDiv">
-				<RandomRecipe />
-				<div id="questionsDiv">					
+				{this.props.randomRecipes?<RandomRecipe />: <i className="fa fa-spinner fa-pulse fa-3x fa-fw" />}
+				<i className="fa fa-spinner fa-pulse fa-3x fa-fw" />
+				<div id="questionsDiv">
 					<form onSubmit={this.onSubmit}>
-						<Question className="question" text={this.props.questions[this.props.counter].title} valueA={this.props.questions[this.props.counter].valueA} valueB={this.props.questions[this.props.counter].valueB} titleA={this.props.randomRecipes[0].title} titleB={this.props.randomRecipes[1].title} />
+						{this.props.randomRecipes?<Question className="question" text={this.props.questions[this.props.counter].title}
+							valueA={this.props.questions[this.props.counter].valueA}
+							valueB={this.props.questions[this.props.counter].valueB}
+							titleA={this.props.randomRecipes[0].title}
+							titleB={this.props.randomRecipes[1].title}
+						/>:''}
 					</form>
 					<span id="feedback">{this.props.feedback}</span>
 					<span id="score">Score: {this.props.score}</span>

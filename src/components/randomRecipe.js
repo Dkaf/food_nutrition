@@ -33,7 +33,7 @@ class RandomRecipe extends React.Component {
 RandomRecipe.propTypes = {
 	children: PropTypes.element,
 	onClick: PropTypes.func,
-	text: PropTypes.string.isRequired,
+	text: PropTypes.string,
 	recipe: PropTypes.array,
 	dispatch: PropTypes.func
 };

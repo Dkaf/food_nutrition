@@ -6,3 +6,17 @@ export function recipeQuery(query) {
 		query: query
 	};
 }
+
+export function buttonDisplay(showButton) {
+	return {
+		type: types.BUTTON_DISPLAY,
+		showButton: showButton
+	};
+}
+
+export function selectText(flag) {
+	return {
+		type: types.SELECT_TEXT,
+		flag: flag
+	};
+}

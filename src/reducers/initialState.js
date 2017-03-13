@@ -1,7 +1,7 @@
 export default {
 	recipe: null,
-	recipeOptions: [],
-	similarRecipes: [],
+	recipeOptions: null,
+	similarRecipes: null,
 	recipeQuery: '',
 	nutritionA: [{}],
 	nutritionB: [{}],
@@ -14,6 +14,8 @@ export default {
 		{title: 'Sugar', valueA: 0, valueB: 0}
 	],
 	feedback: '',
+	showButton: true,
+	selectTextFlag: false,
   fuelSavings: {
     newMpg: '',
     tradeMpg: '',

@@ -4,8 +4,9 @@ import {Link} from 'react-router';
 class IndexPage extends React.Component {
 	render() {
 		return (
-			<div>
-				<span id="quizLink">Play the <Link to="quiz">quiz</Link></span>
+			<div id="indexDiv">
+				<button id="quizLink"><Link to="quiz">Nutrition Quiz</Link></button>
+				<span id="description">Search for a repice to see some healthier options</span>
 			</div>
 		);
 	}

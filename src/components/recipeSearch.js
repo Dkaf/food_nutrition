@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {getSimilarRecipe, getRecipeDetails, getRecipeOptions} from '../actions/recipe_actions';
-import {recipeQuery} from '../actions/searchActions';
+import {recipeQuery, buttonDisplay, selectText} from '../actions/searchActions';
 import Recipe from './recipe';
 
 class RecipeSearch extends React.Component {
@@ -20,11 +20,15 @@ class RecipeSearch extends React.Component {
 		e.preventDefault();
 		this.props.dispatch(getRecipeDetails(e.target.value));
 		this.props.dispatch(getSimilarRecipe(e.target.value));
+		this.props.dispatch(buttonDisplay(false));
+		this.props.dispatch(selectText(false));
 	}
 
 	onSubmit(e) {
 		e.preventDefault();
 		this.props.dispatch(getRecipeOptions(this.props.query));
+		this.props.dispatch(buttonDisplay(true));
+		this.props.dispatch(selectText(true));
 	}
 	render() {
 		let recipeOptions = this.props.recipeOptions.map( (i) => {
@@ -39,10 +43,11 @@ class RecipeSearch extends React.Component {
 			<div id="recipeSearchDiv">
 				<form onSubmit={this.onSubmit}>
 					<input id="recipeInput" placeholder="Recipe Search" onChange={this.onChange} />
-					<button id="recipeSubmit" type="submit">Go!</button>
+					<button id="recipeSubmit" type="submit"><i className="fa fa-search" aria-hidden="true" /></button>
 				</form>
-				{recipeOptions}
-				{recipeResults}
+				{this.props.selectTextFlag?<span className="searchOptionText">Which is closest to your recipe?</span>:''}
+				{this.props.showButton?recipeOptions:''}
+				{this.props.similarRecipes?recipeResults:<i className="fa fa-spinner fa-pulse fa-3x fa-fw" />}
 			</div>
 		);
 	}
@@ -56,8 +61,9 @@ RecipeSearch.propTypes = {
 	dispatch: PropTypes.func,
 	similarRecipes: PropTypes.array,
 	recipeOptions: PropTypes.array,
-	originalRecipeDetails: PropTypes.obj
-
+	originalRecipeDetails: PropTypes.obj,
+	showButton: PropTypes.boolean,
+	selectTextFlag: PropTypes.boolean
 };
 
 let mapStateToProps = (state) => {
@@ -65,7 +71,9 @@ let mapStateToProps = (state) => {
 		query: state.foodReducer.recipeQuery,
 		similarRecipes: state.foodReducer.similarRecipes,
 		recipeOptions: state.foodReducer.recipeOptions,
-		originalRecipeDetails: state.foodReducer.originalRecipeDetails
+		originalRecipeDetails: state.foodReducer.originalRecipeDetails,
+		showButton: state.foodReducer.showButton,
+		selectTextFlag: state.foodReducer.selectTextFlag
 	};
 };
 

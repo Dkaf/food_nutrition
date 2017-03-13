@@ -2,6 +2,7 @@
 $vin-blue: #5bb7db;
 $vin-green: #60b044;
 $vin-red: #ff0000;
+$light-grey: rgb(193, 193, 193);
 
 /* Styles */
 #mainAppDiv {
@@ -13,16 +14,41 @@ $vin-red: #ff0000;
 	font-size: 5em;
 }
 
+#indexDiv {
+	margin-top: 50px;
+}
+
+#description {
+	font-weight: bold;
+	font-size: 2em;
+	color: grey;
+}
+
 button {
 	font-weight: bold;
-	background: rgb(193, 193, 193);
+	background: $light-grey;
 	color: white;
 	border: none;
 	border-radius: 3px;
+	transition: all 0.3s ease 0s;
+	opacity: 1;
+}
+
+button:hover {
+	opacity: .75;
+	cursor: pointer;
+}
+
+a {
+	text-decoration: none;
+	color: white;
 }
 
 //Index styles
 #quizLink {
+	position: absolute;
+	right: 0;
+	top: 0;
 	font-size: 2em;
 }
 
@@ -122,8 +148,13 @@ button {
 
 }
 
+.searchOptionText {
+	font-size: 1.6em;
+	margin-top: 15px;
+}
+
 body {
-  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: 'Cabin', sans-serif;
   line-height: 1.4em;
   color: #4d4d4d;
   min-width: 230px;

@@ -16,7 +16,7 @@ export default function foodReducer(state = initialState, action) {
 			return state;
 
 		case types.GET_RECIPE_OPTIONS_SUCCESS:
-			return objectAssign({}, state, {recipeOptions: action.recipe});
+			return objectAssign({}, state, {recipeOptions: action.recipe, similarRecipes: null});
 
 		case types.GET_RECIPE_OPTIONS_ERR:
 			alert(action.err);
@@ -31,6 +31,12 @@ export default function foodReducer(state = initialState, action) {
 
 		case types.RECIPE_QUERY:
 			return objectAssign({}, state, {recipeQuery: action.query});
+
+		case types.BUTTON_DISPLAY:
+			return objectAssign({}, state, {showButton: action.showButton});
+
+		case types.SELECT_TEXT:
+			return objectAssign({}, state, {selectTextFlag: action.flag})
 
 		case types.GET_RECIPE_DETAILS_SUCCESS:
 			return objectAssign({}, state, {originalRecipeDetails: action.details});
