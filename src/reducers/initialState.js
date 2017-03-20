@@ -1,7 +1,7 @@
 export default {
 	recipe: null,
-	recipeOptions: null,
-	similarRecipes: null,
+	recipeOptions: [],
+	similarRecipes: [],
 	recipeQuery: '',
 	nutritionA: [{}],
 	nutritionB: [{}],
@@ -16,20 +16,5 @@ export default {
 	feedback: '',
 	showButton: true,
 	selectTextFlag: false,
-  fuelSavings: {
-    newMpg: '',
-    tradeMpg: '',
-    newPpg: '',
-    tradePpg: '',
-    milesDriven: '',
-    milesDrivenTimeframe: 'week',
-    displayResults: false,
-    dateModified: null,
-    necessaryDataIsProvidedToCalculateSavings: false,
-    savings: {
-      monthly: 0,
-      annual: 0,
-      threeYear: 0
-    }
-  }
+	recipesLoading: false
 };

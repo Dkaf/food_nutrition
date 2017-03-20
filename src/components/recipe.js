@@ -4,9 +4,11 @@ class Recipe extends React.Component {
 	render() {
 		return (
 			<div className="recipeDiv">
-				<span className="recipeTitle">{this.props.title}</span>
-				<span className="recipeImgSpan"><img className="recipeImg" src={this.props.imgUrl}/></span>
-				<span className="recipeSource">{this.props.source}</span>
+				<div className="container">
+					<img className="recipeImg" src={this.props.imgUrl}/>
+					<span className="recipeTitle">{this.props.title}</span>
+					<span className="recipeSource">{this.props.source}</span>
+				</div>
 			</div>
 		);
 	}

@@ -1,10 +1,19 @@
 /* Variables */
-$vin-blue: #5bb7db;
-$vin-green: #60b044;
-$vin-red: #ff0000;
 $light-grey: rgb(193, 193, 193);
 
 /* Styles */
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	font-family: 'Cabin', sans-serif;
+	width: 100%;
+	height: 100%;
+}
+
+
 #mainAppDiv {
 	text-align: center;
 }
@@ -54,17 +63,31 @@ a {
 
 //Quiz styles
 .recipeDiv {
-	position: relative;
 	text-align: center;
 	font-weight: bold;
 	color: grey;
-	border: 3px solid grey;
-	margin-top: 25px;
-	margin-bottom: 25px;
+	margin: 25px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	border-radius: 5px;
+	width:200px;
+	flex:1;
+	display:flex;
+	flex-direction: column;
+
+}
+
+.recipeDiv .container {
+	position: relative;
+	bottom: 0;
+}
+
+.recipeDiv:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .recipeTitle {
-	font-size: 1.5em;
+	font-size: 1.1em;
 	display: block;
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -72,8 +95,18 @@ a {
 }
 
 .recipeImg {
-	width: 200px;
-	height: auto;
+	width: 100%;
+	height: 80%;
+	border-radius: 5px 5px 0 0;
+	flex-grow: 2;
+}
+
+.recipe-wrapper {
+	width: 50%;
+	margin: 0 auto;
+	display: flex;
+	align-items: stretch;
+	height: 60vh;
 }
 
 .recipeSource {
@@ -83,7 +116,6 @@ a {
 
 #quizDiv {
 	display: block;
-	float: left;
 }
 
 #questionsDiv {
@@ -98,9 +130,10 @@ a {
 }
 
 .questionButton {
-	height: 50px;
-	width: 300px;
+	height: 90px;
+	width: 340px;
 	margin-bottom: 15px;
+	margin-right: 20px;
 	font-size: 1.3em;
 	text-transform: capitalize;
 }
@@ -113,6 +146,41 @@ a {
 #score {
 	font-size: 1.5em;
 	text-align: right;
+}
+
+.loadingIcon {
+	position: absolute;;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(20, 20, 20, 0.75);
+}
+
+.loadingIcon i {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#resultsDiv {
+	margin-top: 25px;
+}
+
+#resultsDiv span {
+	font-size: 1.6em;
+}
+
+.finalScore {
+	display: block;
+}
+
+#retryButton {
+	height: 50px;
+	width: 300px;
+	font-size: 2em;
+	margin-top: 25px;
 }
 
 // Recipe Search Syles
@@ -134,7 +202,7 @@ a {
 	text-transform: uppercase;
 	height: 30px;
 	width: 90px;
-	font-size: 1.4em;
+	font-size: 1.6em;
 	border-radius: 0px;
 }
 
@@ -152,29 +220,3 @@ a {
 	font-size: 1.6em;
 	margin-top: 15px;
 }
-
-body {
-	font-family: 'Cabin', sans-serif;
-  line-height: 1.4em;
-  color: #4d4d4d;
-  min-width: 230px;
-  max-width: 550px;
-  margin: 0 auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  font-weight: 300;
-}
-
-td {
-	padding: 12px;
-}
-
-h2 {
-	color: $vin-blue;
-}
-
-.savings { color: $vin-green; }
-.loss { color: $vin-red; }
-input.small { width: 46px; }
-td.fuel-savings-label { width: 175px; }

@@ -16,14 +16,14 @@ export default function foodReducer(state = initialState, action) {
 			return state;
 
 		case types.GET_RECIPE_OPTIONS_SUCCESS:
-			return objectAssign({}, state, {recipeOptions: action.recipe, similarRecipes: null});
+			return objectAssign({}, state, {recipeOptions: action.recipe, similarRecipes: [], recipesLoading:false});
 
 		case types.GET_RECIPE_OPTIONS_ERR:
 			alert(action.err);
 			return state;
 
 		case types.GET_SIMILAR_RECIPE_SUCCESS:
-			return objectAssign({}, state, {similarRecipes: action.recipes});
+			return objectAssign({}, state, {similarRecipes: action.recipes, recipesLoading: false});
 
 		case types.GET_SIMILAR_RECIPE_ERR:
 			alert(action.err);
@@ -33,10 +33,14 @@ export default function foodReducer(state = initialState, action) {
 			return objectAssign({}, state, {recipeQuery: action.query});
 
 		case types.BUTTON_DISPLAY:
-			return objectAssign({}, state, {showButton: action.showButton});
+			return objectAssign({}, state, {showButton: action.showButton,
+				selectedTitle: state.recipeOptions.find((i)=>{return i.id == action.clickedId;})});
 
 		case types.SELECT_TEXT:
-			return objectAssign({}, state, {selectTextFlag: action.flag})
+			return objectAssign({}, state, {selectTextFlag: action.flag});
+
+		case types.RECIPES_LOADING:
+			return objectAssign({}, state, {recipesLoading: action.flag});
 
 		case types.GET_RECIPE_DETAILS_SUCCESS:
 			return objectAssign({}, state, {originalRecipeDetails: action.details});

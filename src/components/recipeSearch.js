@@ -1,8 +1,9 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {getSimilarRecipe, getRecipeDetails, getRecipeOptions} from '../actions/recipe_actions';
-import {recipeQuery, buttonDisplay, selectText} from '../actions/searchActions';
+import {recipeQuery, buttonDisplay, selectText, recipesLoading} from '../actions/searchActions';
 import Recipe from './recipe';
+import LoadingIcon from './loadingIcon';
 
 class RecipeSearch extends React.Component {
 	constructor(props) {
@@ -22,6 +23,7 @@ class RecipeSearch extends React.Component {
 		this.props.dispatch(getSimilarRecipe(e.target.value));
 		this.props.dispatch(buttonDisplay(false));
 		this.props.dispatch(selectText(false));
+		this.props.dispatch(recipesLoading(true));
 	}
 
 	onSubmit(e) {
@@ -29,6 +31,7 @@ class RecipeSearch extends React.Component {
 		this.props.dispatch(getRecipeOptions(this.props.query));
 		this.props.dispatch(buttonDisplay(true));
 		this.props.dispatch(selectText(true));
+		this.props.dispatch(recipesLoading(true));
 	}
 	render() {
 		let recipeOptions = this.props.recipeOptions.map( (i) => {
@@ -46,12 +49,16 @@ class RecipeSearch extends React.Component {
 					<button id="recipeSubmit" type="submit"><i className="fa fa-search" aria-hidden="true" /></button>
 				</form>
 				{this.props.selectTextFlag?<span className="searchOptionText">Which is closest to your recipe?</span>:''}
+
 				{this.props.showButton?recipeOptions:''}
-				{this.props.similarRecipes?recipeResults:<i className="fa fa-spinner fa-pulse fa-3x fa-fw" />}
+				{recipeResults}
+				{this.props.recipesLoading?<LoadingIcon />:''}
 			</div>
 		);
 	}
 }
+
+//loading flag
 
 RecipeSearch.propTypes = {
 	query: PropTypes.string,
@@ -63,7 +70,8 @@ RecipeSearch.propTypes = {
 	recipeOptions: PropTypes.array,
 	originalRecipeDetails: PropTypes.obj,
 	showButton: PropTypes.boolean,
-	selectTextFlag: PropTypes.boolean
+	selectTextFlag: PropTypes.boolean,
+	recipesLoading: PropTypes.loading
 };
 
 let mapStateToProps = (state) => {
@@ -73,7 +81,8 @@ let mapStateToProps = (state) => {
 		recipeOptions: state.foodReducer.recipeOptions,
 		originalRecipeDetails: state.foodReducer.originalRecipeDetails,
 		showButton: state.foodReducer.showButton,
-		selectTextFlag: state.foodReducer.selectTextFlag
+		selectTextFlag: state.foodReducer.selectTextFlag,
+		recipesLoading: state.foodReducer.recipesLoading
 	};
 };
 

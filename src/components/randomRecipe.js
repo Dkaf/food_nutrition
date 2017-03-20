@@ -23,7 +23,7 @@ class RandomRecipe extends React.Component {
 		}
 
 		return (
-			<div>
+			<div className="recipe-wrapper">
 					{recipes}
 			</div>
 		);

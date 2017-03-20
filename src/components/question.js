@@ -1,7 +1,9 @@
 import React, {PropTypes} from 'react';
 import * as actions from '../actions/quizActions';
 import {connect} from 'react-redux';
-
+import {browserHistory} from 'react-router';
+import RandomRecipe from './randomRecipe';
+import LoadingIcon from './loadingIcon';
 
 class Question extends React.Component {
 	constructor(props) {
@@ -9,19 +11,22 @@ class Question extends React.Component {
 		this.checkAnswer = this.checkAnswer.bind(this);
 	}
 
+	componentWillMount() {
+
+	}
+
 	checkAnswer(e) {
 		e.preventDefault();
-		console.log('clicked');
-		if( this.props.valueA > this.props.valueB && e.target.value == this.props.valueA) {
+		if( this.props.questions[this.props.count].valueA > this.props.questions[this.props.count].valueB && e.target.value == this.props.questions[this.props.count].valueA) {
 			this.props.dispatch(actions.addScore());
 		}
-		else if ( this.props.valueB > this.props.valueA && e.target.value == this.props.valueB) {
+		else if ( this.props.questions[this.props.count].valueB > this.props.questions[this.props.count].valueA && e.target.value == this.props.questions[this.props.count].valueB) {
 			this.props.dispatch(actions.addScore());
 		} else {
 			this.props.dispatch(actions.incorrect());
 		}
 		if (this.props.count === this.props.questions.length - 1) {
-			this.props.dispatch(actions.quizReset());
+			browserHistory.push('/quiz/results');
 		} else {
 			this.props.dispatch(actions.nextQuestion());
 		}
@@ -30,30 +35,44 @@ class Question extends React.Component {
 	render() {
 		return (
 			<div className="questionDiv">
-				<span className="questionText"> Which has more {this.props.text}?</span>
-					<button className="questionButton" value={this.props.valueA} onClick={this.checkAnswer}>{this.props.titleA}</button>
-					<button className="questionButton" value={this.props.valueB} onClick={this.checkAnswer} >{this.props.titleB}</button>
+				{this.props.randomRecipes?<div>
+				<RandomRecipe/>
+				<span className="questionText"> Which has more {this.props.questions[this.props.count].title}?</span>
+					<button
+						className="questionButton"
+						value={this.props.questions[this.props.count].valueA}
+						onClick={this.checkAnswer}>{this.props.randomRecipes[0].title}
+					</button>
+					<button
+						className="questionButton"
+						value={this.props.questions[this.props.count].valueB}
+						onClick={this.checkAnswer}>{this.props.randomRecipes[1].title}
+					</button>
+				</div>:<LoadingIcon/>}
+				<span id="feedback">{this.props.feedback}</span>
+				<span id="score">Score: {this.props.score}</span>
 			</div>
 		);
 	}
 }
 
 Question.propTypes = {
-	text: PropTypes.string.isRequired,
-	valueA: PropTypes.number.isRequired,
-	valueB: PropTypes.number.isRequired,
-	titleA: PropTypes.string.isRequired,
-	titleB: PropTypes.string.isRequired,
 	onChange: PropTypes.func,
 	questions: PropTypes.array,
 	count: PropTypes.number,
-	dispatch: PropTypes.func
+	randomRecipes: PropTypes.array,
+	dispatch: PropTypes.func,
+	feedback: PropTypes.string,
+	score: PropTypes.number
 };
 
 let mapStateToProps = (state) => {
 	return {
 		count: state.foodReducer.questionCounter,
-		questions: state.foodReducer.questions
+		questions: state.foodReducer.questions,
+		randomRecipes: state.foodReducer.recipe,
+		score: state.foodReducer.score,
+		feedback: state.foodReducer.feedback
 	};
 };
 

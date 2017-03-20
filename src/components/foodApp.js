@@ -1,6 +1,4 @@
 import React, {PropTypes} from 'react';
-import {Link} from 'react-router';
-import RandomRecipe from './randomRecipe';
 import RecipeSearch from './recipeSearch';
 
 
