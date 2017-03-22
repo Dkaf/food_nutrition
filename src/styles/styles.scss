@@ -80,6 +80,7 @@ a {
 .recipeDiv .container {
 	position: relative;
 	bottom: 0;
+	height: 100%;
 }
 
 .recipeDiv:hover {
@@ -102,7 +103,7 @@ a {
 }
 
 .recipe-wrapper {
-	width: 50%;
+	width: 800px;
 	margin: 0 auto;
 	display: flex;
 	align-items: stretch;
@@ -219,4 +220,22 @@ a {
 .searchOptionText {
 	font-size: 1.6em;
 	margin-top: 15px;
+}
+@media (max-width: 800px) and (min-width: 656px) {
+	.recipe-wrapper {
+		width: 700px;
+	}
+}
+
+@media (max-width: 655px) {
+	.recipe-wrapper {
+		width: 350px;
+		height: 50vh;
+	}
+	.recipeTitle {
+		display: none;
+	}
+	.recipeSource {
+		display: none;
+	}
 }

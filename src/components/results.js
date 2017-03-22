@@ -12,7 +12,7 @@ class Results extends React.Component {
 
 	onClick() {
 		this.props.dispatch(quizReset(0,0));
-		// this.props.dispatch(getRandomRecipe());
+		this.props.dispatch(getRandomRecipe(this.props.questions));
 	}
 	render() {
 		return (

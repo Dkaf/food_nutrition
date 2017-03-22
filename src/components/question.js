@@ -40,13 +40,15 @@ class Question extends React.Component {
 				<span className="questionText"> Which has more {this.props.questions[this.props.count].title}?</span>
 					<button
 						className="questionButton"
+						title={this.props.randomRecipes[0].title}
 						value={this.props.questions[this.props.count].valueA}
-						onClick={this.checkAnswer}>{this.props.randomRecipes[0].title}
+						onClick={this.checkAnswer}>{this.props.randomRecipes[0].title.length>20?this.props.randomRecipes[0].title.substr(0, 20) + '...':this.props.randomRecipes[0].title}
 					</button>
 					<button
 						className="questionButton"
+						title={this.props.randomRecipes[1].title}
 						value={this.props.questions[this.props.count].valueB}
-						onClick={this.checkAnswer}>{this.props.randomRecipes[1].title}
+						onClick={this.checkAnswer}>{this.props.randomRecipes[1].title.length>20?this.props.randomRecipes[1].title.substr(0,20) + '...':this.props.randomRecipes[1].title}
 					</button>
 				</div>:<LoadingIcon/>}
 				<span id="feedback">{this.props.feedback}</span>

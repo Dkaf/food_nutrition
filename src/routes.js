@@ -4,7 +4,7 @@ import { Route, IndexRoute } from 'react-router';
 import FoodApp from './components/foodApp';
 import QuizForm from './components/quizForm';
 import Question from './components/question';
-import Results from './components/results'
+import Results from './components/results';
 import IndexPage from './components/indexPage';
 import NotFoundPage from './components/NotFoundPage';
 

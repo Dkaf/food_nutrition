@@ -24,11 +24,18 @@ class QuizForm extends React.Component {
 	}
 }
 
+let mapStateToProps = (state) => {
+	return {
+		questions: state.foodReducer.questions
+	};
+};
 
 QuizForm.propTypes = {
 	children: PropTypes.element,
+	questions: PropTypes.array,
+	dispatch: PropTypes.func
 };
 
-let Container = connect()(QuizForm);
+let Container = connect(mapStateToProps)(QuizForm);
 
 export default Container;
