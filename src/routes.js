@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route, IndexRoute, Redirect } from 'react-router';
 
 import FoodApp from './components/foodApp';
 import QuizForm from './components/quizForm';
@@ -15,6 +15,7 @@ export default (
 		<IndexRoute component={Question}/>
 		<Route path="results" component={Results}/>
     </Route>
+	<Redirect from="food_nutrition" to="/" />
     <Route path="*" component={NotFoundPage}/>
   </Route>
 );
