@@ -33,7 +33,6 @@ class SearchResults extends React.Component {
 		return (
 			<div id="searchResults">
 				{this.props.selectTextFlag?<span className="searchOptionText">Which is closest to your recipe?</span>:''}
-
 				{this.props.showButton?recipeOptions:''}
 				{recipeResults}
 				{this.props.recipesLoading?<LoadingIcon />:''}
