@@ -81,6 +81,7 @@ a {
 	position: relative;
 	bottom: 0;
 	height: 100%;
+	color: grey;
 }
 
 .recipeDiv:hover {
@@ -188,7 +189,12 @@ a {
 
 #recipeSearchDiv {
 	text-align: center;
-	position: relative;
+}
+
+#searchResults {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
 }
 
 #recipeInput {
