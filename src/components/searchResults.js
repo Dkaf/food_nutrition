@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 import {getSimilarRecipe, getRecipeDetails} from '../actions/recipe_actions';
 import {buttonDisplay, selectText, recipesLoading} from '../actions/searchActions';
 import Recipe from './recipe';
@@ -31,11 +32,15 @@ class SearchResults extends React.Component {
 			}
 		});
 		return (
-			<div id="searchResults">
-				{this.props.selectTextFlag?<span className="searchOptionText">Which is closest to your recipe?</span>:''}
-				{this.props.showButton?recipeOptions:''}
-				{recipeResults}
-				{this.props.recipesLoading?<LoadingIcon />:''}
+			<div>
+				<button id="quizLink"><Link to="quiz">Nutrition Quiz</Link></button>
+			{this.props.recipesLoading?<LoadingIcon />:
+				<div id="searchResults">
+					{this.props.selectTextFlag?<span className="searchOptionText">Which is closest to your recipe?</span>:''}
+					{this.props.showButton?recipeOptions:''}
+					{recipeResults}
+				</div>
+			}
 			</div>
 		);
 	}
