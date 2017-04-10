@@ -20,7 +20,7 @@ Production
 
 ## How it Works
 
-### Healtier Recipes
+### Healthier Recipes
 
 Type your recipe in the search bar and some similar recipes will show up. Select the recipe that's closest to yours and healtier options will be displayed. Just click a recipe that you're interested in to see the instructions.
 
